@@ -1,6 +1,6 @@
 # Lab 2: Agile Backlog Creation & Sprint Simulation in Jira
 
-**Student:** Mohammed Sinan M T (PES1UG24AM165)
+Mohammed Sinan M T (PES1UG24AM165) AIML C
 **Jira project:** Evaluator-Integrity (key `EE`), Scrum template, company-managed
 **Scenario:** Problem Statement #02, Test Case 4: Academic Integrity, Regrade Appeals & Cohort Analytics
 
