@@ -1,7 +1,5 @@
 # Lab 4: VibeCoding (Snake, repo `SETAPESU26/45_snake`)
 
-I fixed the broken Snake game and added the four features from the repo README, working with an AI assistant (Claude Code).
-
 ## Contents
 
 | Path | Deliverable |
