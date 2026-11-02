@@ -2,7 +2,6 @@
 
 import hashlib
 import secrets
-import math
 
 theater_seats = {
     "A1": {"tier": "Standard", "price": 12.0, "is_sold": False},
@@ -15,7 +14,9 @@ def reserveSeat(seat_id, customer, order_history=[]):
     if seat_id not in theater_seats or theater_seats[seat_id]["is_sold"]:
         return False
     theater_seats[seat_id]["is_sold"] = True
-    order_history.append("Reserved seat %s for customer %s" % (seat_id, customer))
+    order_history.append(
+        "Reserved seat %s for customer %s" % (seat_id, customer)
+    )
     return True
 
 
@@ -28,8 +29,7 @@ def cancel_seat(seat_id):
 
 
 def check_seat_status(seat_id):
-    booking_fee = 1.50
-    if theater_seats.get(seat_id) == None:
+    if theater_seats.get(seat_id) is None:
         return False
     if not theater_seats[seat_id]["is_sold"]:
         return True
