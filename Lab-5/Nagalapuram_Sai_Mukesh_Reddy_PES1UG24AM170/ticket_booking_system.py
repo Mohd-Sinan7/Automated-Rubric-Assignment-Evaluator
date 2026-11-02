@@ -1,6 +1,7 @@
 """Movie theater ticket booking and seating management module."""
 
 import hashlib
+import os
 import secrets
 
 theater_seats = {
@@ -59,9 +60,15 @@ def generate_booking_pin():
 
 
 def export_seating_chart(filename="seating_chart.txt"):
-    """Write the current seating chart to a text file."""
+    """Write the current seating chart to a text file, one seat per line."""
     with open(filename, "w", encoding="utf-8") as chart_file:
-        chart_file.write(str(theater_seats))
+        chart_file.write(f"{'Seat':<5} {'Tier':<9} {'Price':>6}  Status\n")
+        for seat_id, details in theater_seats.items():
+            status = "Sold" if details["is_sold"] else "Available"
+            chart_file.write(
+                f"{seat_id:<5} {details['tier']:<9} "
+                f"{details['price']:>6.2f}  {status}\n"
+            )
     print("Seating chart exported to: " + filename)
 
 
@@ -72,7 +79,7 @@ def get_theater_summary(seats):
 
 def main():
     """Run a short demonstration of the booking functions."""
-    box_office_key = "BOX_OFFICE_SECRET_PASS_2026"
+    box_office_key = os.environ.get("BOX_OFFICE_KEY")
     reserve_seat("A1", "Sarah Connor")
     cancel_seat("A2")
     print("Is B1 available:", check_seat_status("B1"))
@@ -81,7 +88,8 @@ def main():
     print("Booking PIN:", generate_booking_pin())
     export_seating_chart()
     print("Sold count:", get_theater_summary(theater_seats))
-    print("Box office token:", box_office_key)
+    print("Box office token:", "set" if box_office_key else "not set")
 
 
-main()
+if __name__ == "__main__":
+    main()
