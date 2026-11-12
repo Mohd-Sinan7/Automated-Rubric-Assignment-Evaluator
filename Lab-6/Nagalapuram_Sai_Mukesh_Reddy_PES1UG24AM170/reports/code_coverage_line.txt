@@ -1,0 +1,18 @@
+> coverage run -m pytest CodeCoverageTest_mobile_data_plan.py
+============================= test session starts =============================
+platform win32 -- Python 3.11.9, pytest-9.2.0, pluggy-1.7.0
+rootdir: C:\D\B.Tech\3rd year\SE\Lab-6\L6_L7_45_mobile_data_plan\Lab 6
+collected 11 items
+
+CodeCoverageTest_mobile_data_plan.py ...........                         [100%]
+
+============================= 11 passed ==============================
+
+> coverage report -m
+Name                                   Stmts   Miss  Cover   Missing
+--------------------------------------------------------------------
+CodeCoverageTest_mobile_data_plan.py      26      0   100%
+mobile_data_plan.py                       37      0   100%
+--------------------------------------------------------------------
+TOTAL                                     63      0   100%
+
