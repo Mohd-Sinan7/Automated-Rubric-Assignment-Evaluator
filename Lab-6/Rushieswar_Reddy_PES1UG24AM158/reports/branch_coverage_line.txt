@@ -1,0 +1,15 @@
+﻿============================= test session starts =============================
+platform win32 -- Python 3.11.9, pytest-9.2.0, pluggy-1.7.0
+rootdir: C:\Users\marre\.gemini\antigravity\scratch\lab6_work\Automated-Rubric-Assignment-Evaluator\Lab-6\Rushieswar_Reddy_PES1UG24AM158
+plugins: anyio-4.15.1, platformdirs-4.14.3, cov-7.0.0
+collected 37 items
+
+BranchCoverageTest_spam_scoring.py ..................................... [100%]
+
+============================= 37 passed in 0.14s ==============================
+Name                                 Stmts   Miss  Cover   Missing
+------------------------------------------------------------------
+BranchCoverageTest_spam_scoring.py      39      0   100%
+spam_scoring.py                         39      0   100%
+------------------------------------------------------------------
+TOTAL                                   78      0   100%
