@@ -1,0 +1,17 @@
+==== Running parse_trip ====
+Enter cab:distance in km (e.g. sedan:12): sedan:12
+Cab and Distance: ('Sedan', 12.0)
+
+==== Running fare_average ====
+Enter fares as CSV (e.g. 120,95,210): 120,95,210
+Average Fare: 141
+
+==== Running payable_fare ====
+Enter fare|promo (e.g. 250|30): 250|30
+Payable Fare: 265.0
+
+# Defensive validation test:
+parse_trip('') -> None
+parse_trip('sedan:-10') -> None
+fare_average('') -> 0
+payable_fare('invalid') -> 0.0
