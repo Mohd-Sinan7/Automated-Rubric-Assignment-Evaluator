@@ -1,0 +1,26 @@
+
+(venv) C:\D\B.Tech\3rd year\SE\Lab-6\L6_L7_45_mobile_data_plan\Lab 7>python -m pytest test_mobile_data_plan.py -v
+================================================================ test session starts ================================================================
+platform win32 -- Python 3.11.9, pytest-9.2.0, pluggy-1.7.0 -- C:\D\B.Tech\3rd year\SE\Lab-6\venv\Scripts\python.exe
+cachedir: .pytest_cache
+hypothesis profile 'default'
+rootdir: C:\D\B.Tech\3rd year\SE\Lab-6\L6_L7_45_mobile_data_plan\Lab 7
+plugins: hypothesis-6.170.17
+collected 12 items
+
+test_mobile_data_plan.py::test_parse_plan_no_crash PASSED                                                                                      [  8%]
+test_mobile_data_plan.py::test_usage_average_no_crash PASSED                                                                                   [ 16%]
+test_mobile_data_plan.py::test_payable_bill_no_crash PASSED                                                                                    [ 25%]
+test_mobile_data_plan.py::test_parse_plan_format_fuzz PASSED                                                                                   [ 33%]
+test_mobile_data_plan.py::test_parse_plan_data_must_be_finite_and_not_negative PASSED                                                          [ 41%]
+test_mobile_data_plan.py::test_usage_average_matches_integer_mean PASSED                                                                       [ 50%]
+test_mobile_data_plan.py::test_usage_average_messy_csv PASSED                                                                                  [ 58%]
+test_mobile_data_plan.py::test_usage_average_huge_number PASSED                                                                                [ 66%]
+test_mobile_data_plan.py::test_payable_bill_amounts PASSED                                                                                     [ 75%]
+test_mobile_data_plan.py::test_payable_bill_discount_never_increases_bill PASSED                                                               [ 83%]
+test_mobile_data_plan.py::test_payable_bill_wrong_number_of_fields PASSED                                                                      [ 91%]
+test_mobile_data_plan.py::test_known_good_inputs PASSED                                                                                        [100%]
+
+================================================================ 12 passed in 3.48s =================================================================
+
+(venv) C:\D\B.Tech\3rd year\SE\Lab-6\L6_L7_45_mobile_data_plan\Lab 7>

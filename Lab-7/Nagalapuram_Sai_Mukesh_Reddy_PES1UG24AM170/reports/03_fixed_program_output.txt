@@ -1,0 +1,41 @@
+
+(venv) C:\D\B.Tech\3rd year\SE\Lab-6\L6_L7_45_mobile_data_plan\Lab 7>python mobile_data_plan.py
+==== Running parse_plan ====
+Enter plan:data in GB (e.g. standard:5): standard:5
+Plan and Data: ('Standard', 5.0)
+
+==== Running usage_average ====
+Enter daily usage in MB as CSV (e.g. 300,450,800): 300,450,800
+Average Usage: 516
+
+==== Running payable_bill ====
+Enter bill|discount (e.g. 399|50): 399|50
+Payable Bill: 420.82
+
+(venv) C:\D\B.Tech\3rd year\SE\Lab-6\L6_L7_45_mobile_data_plan\Lab 7>python mobile_data_plan.py
+==== Running parse_plan ====
+Enter plan:data in GB (e.g. standard:5): standard
+Invalid input: expected plan:data in GB, e.g. standard:5 (data must be a number >= 0)
+
+==== Running usage_average ====
+Enter daily usage in MB as CSV (e.g. 300,450,800): 300,,800
+Invalid input: expected whole numbers of MB >= 0 separated by commas, e.g. 300,450,800
+
+==== Running payable_bill ====
+Enter bill|discount (e.g. 399|50): 399
+Invalid input: expected bill|discount with two amounts >= 0, e.g. 399|50
+
+(venv) C:\D\B.Tech\3rd year\SE\Lab-6\L6_L7_45_mobile_data_plan\Lab 7>python mobile_data_plan.py
+==== Running parse_plan ====
+Enter plan:data in GB (e.g. standard:5): premium:nan
+Invalid input: expected plan:data in GB, e.g. standard:5 (data must be a number >= 0)
+
+==== Running usage_average ====
+Enter daily usage in MB as CSV (e.g. 300,450,800): 300,-450,800
+Invalid input: expected whole numbers of MB >= 0 separated by commas, e.g. 300,450,800
+
+==== Running payable_bill ====
+Enter bill|discount (e.g. 399|50): 399|-50
+Invalid input: expected bill|discount with two amounts >= 0, e.g. 399|50
+
+(venv) C:\D\B.Tech\3rd year\SE\Lab-6\L6_L7_45_mobile_data_plan\Lab 7>

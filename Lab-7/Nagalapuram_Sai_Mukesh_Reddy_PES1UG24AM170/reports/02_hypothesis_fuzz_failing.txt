@@ -1,0 +1,194 @@
+> python -m pytest test_mobile_data_plan.py -v --tb=short
+================================================================ test session starts ================================================================
+platform win32 -- Python 3.11.9, pytest-9.2.0, pluggy-1.7.0 -- C:\D\B.Tech\3rd year\SE\Lab-6\venv\Scripts\python.exe
+hypothesis profile 'default'
+rootdir: C:\D\B.Tech\3rd year\SE\Lab-6\L6_L7_45_mobile_data_plan\Lab 7
+plugins: hypothesis-6.170.17
+collecting ... collected 12 items
+
+test_mobile_data_plan.py::test_parse_plan_no_crash FAILED                                                                                      [  8%]
+test_mobile_data_plan.py::test_usage_average_no_crash FAILED                                                                                   [ 16%]
+test_mobile_data_plan.py::test_payable_bill_no_crash FAILED                                                                                    [ 25%]
+test_mobile_data_plan.py::test_parse_plan_format_fuzz FAILED                                                                                   [ 33%]
+test_mobile_data_plan.py::test_parse_plan_data_must_be_finite_and_not_negative FAILED                                                          [ 41%]
+test_mobile_data_plan.py::test_usage_average_matches_integer_mean FAILED                                                                       [ 50%]
+test_mobile_data_plan.py::test_usage_average_messy_csv FAILED                                                                                  [ 58%]
+test_mobile_data_plan.py::test_usage_average_huge_number FAILED                                                                                [ 66%]
+test_mobile_data_plan.py::test_payable_bill_amounts FAILED                                                                                     [ 75%]
+test_mobile_data_plan.py::test_payable_bill_discount_never_increases_bill FAILED                                                               [ 83%]
+test_mobile_data_plan.py::test_payable_bill_wrong_number_of_fields FAILED                                                                      [ 91%]
+test_mobile_data_plan.py::test_known_good_inputs PASSED                                                                                        [100%]
+
+===================================================================== FAILURES ======================================================================
+_____________________________________________________________ test_parse_plan_no_crash ______________________________________________________________
+test_mobile_data_plan.py:53: in test_parse_plan_no_crash
+    parse_plan(s)
+mobile_data_plan.py:2: in parse_plan
+    plan, gb = text.split(':')
+               ^^^^^^^^^^
+E   AttributeError: 'NoneType' object has no attribute 'split'
+
+During handling of the above exception, another exception occurred:
+test_mobile_data_plan.py:51: in test_parse_plan_no_crash
+    def test_parse_plan_no_crash(s):
+                   ^^^
+test_mobile_data_plan.py:55: in test_parse_plan_no_crash
+    assert False, f"parse_plan({s!r}) crashed with: {type(e).__name__}: {e}"
+E   AssertionError: parse_plan(None) crashed with: AttributeError: 'NoneType' object has no attribute 'split'
+E   assert False
+E   Failing test case: test_parse_plan_no_crash(
+E       s=None,
+E   )
+____________________________________________________________ test_usage_average_no_crash ____________________________________________________________
+test_mobile_data_plan.py:61: in test_usage_average_no_crash
+    usage_average(s)
+mobile_data_plan.py:6: in usage_average
+    values = [int(r) for r in usage_csv.split(',')]
+                              ^^^^^^^^^^^^^^^
+E   AttributeError: 'NoneType' object has no attribute 'split'
+
+During handling of the above exception, another exception occurred:
+test_mobile_data_plan.py:59: in test_usage_average_no_crash
+    def test_usage_average_no_crash(s):
+                   ^^^
+test_mobile_data_plan.py:63: in test_usage_average_no_crash
+    assert False, f"usage_average({s!r}) crashed with: {type(e).__name__}: {e}"
+E   AssertionError: usage_average(None) crashed with: AttributeError: 'NoneType' object has no attribute 'split'
+E   assert False
+E   Failing test case: test_usage_average_no_crash(
+E       s=None,
+E   )
+____________________________________________________________ test_payable_bill_no_crash _____________________________________________________________
+test_mobile_data_plan.py:69: in test_payable_bill_no_crash
+    payable_bill(s)
+mobile_data_plan.py:10: in payable_bill
+    bill, discount = text.split('|')
+                     ^^^^^^^^^^
+E   AttributeError: 'NoneType' object has no attribute 'split'
+
+During handling of the above exception, another exception occurred:
+test_mobile_data_plan.py:67: in test_payable_bill_no_crash
+    def test_payable_bill_no_crash(s):
+                   ^^^
+test_mobile_data_plan.py:71: in test_payable_bill_no_crash
+    assert False, f"payable_bill({s!r}) crashed with: {type(e).__name__}: {e}"
+E   AssertionError: payable_bill(None) crashed with: AttributeError: 'NoneType' object has no attribute 'split'
+E   assert False
+E   Failing test case: test_payable_bill_no_crash(
+E       s=None,
+E   )
+____________________________________________________________ test_parse_plan_format_fuzz ____________________________________________________________
+test_mobile_data_plan.py:79: in test_parse_plan_format_fuzz
+    def test_parse_plan_format_fuzz(plan, sep, gb):
+                   ^^^
+test_mobile_data_plan.py:82: in test_parse_plan_format_fuzz
+    result = call(parse_plan, text)
+             ^^^^^^^^^^^^^^^^^^^^^^
+test_mobile_data_plan.py:43: in call
+    raise AssertionError(f"{func.__name__}({short(arg)}) crashed with {type(e).__name__}: {message}") from None
+E   AssertionError: parse_plan(':') crashed with ValueError: could not convert string to float
+E   Failing test case: test_parse_plan_format_fuzz(
+E       plan='',
+E       sep=':',
+E       gb='',
+E   )
+_______________________________________________ test_parse_plan_data_must_be_finite_and_not_negative ________________________________________________
+test_mobile_data_plan.py:91: in test_parse_plan_data_must_be_finite_and_not_negative
+    def test_parse_plan_data_must_be_finite_and_not_negative(gb):
+                   ^^^
+test_mobile_data_plan.py:98: in test_parse_plan_data_must_be_finite_and_not_negative
+    assert result is None, f"parse_plan({text!r}) returned {result} instead of None"
+E   AssertionError: parse_plan('standard:-1.0') returned ('Standard', -1.0) instead of None
+E   assert ('Standard', -1.0) is None
+E   Failing test case: test_parse_plan_data_must_be_finite_and_not_negative(
+E       gb=-1.0,
+E   )
+______________________________________________________ test_usage_average_matches_integer_mean ______________________________________________________
+test_mobile_data_plan.py:102: in test_usage_average_matches_integer_mean
+    def test_usage_average_matches_integer_mean(values):
+                   ^^^
+test_mobile_data_plan.py:105: in test_usage_average_matches_integer_mean
+    result = call(usage_average, text)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+test_mobile_data_plan.py:43: in call
+    raise AssertionError(f"{func.__name__}({short(arg)}) crashed with {type(e).__name__}: {message}") from None
+E   AssertionError: usage_average('') crashed with ValueError: invalid literal for int() with base 10
+E   Failing test case: test_usage_average_matches_integer_mean(
+E       values=[],
+E   )
+___________________________________________________________ test_usage_average_messy_csv ____________________________________________________________
+test_mobile_data_plan.py:114: in test_usage_average_messy_csv
+    def test_usage_average_messy_csv(tokens):
+                   ^^^
+test_mobile_data_plan.py:117: in test_usage_average_messy_csv
+    result = call(usage_average, text)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+test_mobile_data_plan.py:43: in call
+    raise AssertionError(f"{func.__name__}({short(arg)}) crashed with {type(e).__name__}: {message}") from None
+E   AssertionError: usage_average('') crashed with ValueError: invalid literal for int() with base 10
+E   Failing test case: test_usage_average_messy_csv(
+E       tokens=[''],
+E   )
+__________________________________________________________ test_usage_average_huge_number ___________________________________________________________
+test_mobile_data_plan.py:123: in test_usage_average_huge_number
+    def test_usage_average_huge_number(digits):
+                   ^^^
+test_mobile_data_plan.py:125: in test_usage_average_huge_number
+    call(usage_average, "9" * digits)
+test_mobile_data_plan.py:43: in call
+    raise AssertionError(f"{func.__name__}({short(arg)}) crashed with {type(e).__name__}: {message}") from None
+E   AssertionError: usage_average('999999999999999999999999999999999999999...<4301 chars>) crashed with ValueError: Exceeds the limit (4300 digits) for integer string conversion
+E   Failing test case: test_usage_average_huge_number(
+E       digits=4301,
+E   )
+_____________________________________________________________ test_payable_bill_amounts _____________________________________________________________
+test_mobile_data_plan.py:129: in test_payable_bill_amounts
+    def test_payable_bill_amounts(bill, discount):
+                   ^^^
+test_mobile_data_plan.py:134: in test_payable_bill_amounts
+    assert isinstance(result, float), f"payable_bill({text!r}) returned {type(result).__name__} {result!r}"
+E   AssertionError: payable_bill('0.0|1.0') returned int 0
+E   assert False
+E    +  where False = isinstance(0, float)
+E   Failing test case: test_payable_bill_amounts(
+E       bill=0.0,
+E       discount=1.0,
+E   )
+__________________________________________________ test_payable_bill_discount_never_increases_bill __________________________________________________
+test_mobile_data_plan.py:144: in test_payable_bill_discount_never_increases_bill
+    discount=st.floats(min_value=-1e6, max_value=1e6))
+            ^^^
+test_mobile_data_plan.py:150: in test_payable_bill_discount_never_increases_bill
+    assert with_discount <= without_discount, \
+E   AssertionError: payable_bill('0.0|-1.0') = 1.0 > 0.0 with no discount
+E   assert 1.0 <= 0.0
+E   Failing test case: test_payable_bill_discount_never_increases_bill(
+E       bill=0.0,
+E       discount=-1.0,
+E   )
+_____________________________________________________ test_payable_bill_wrong_number_of_fields ______________________________________________________
+test_mobile_data_plan.py:155: in test_payable_bill_wrong_number_of_fields
+    def test_payable_bill_wrong_number_of_fields(parts):
+                   ^^^
+test_mobile_data_plan.py:158: in test_payable_bill_wrong_number_of_fields
+    result = call(payable_bill, text)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+test_mobile_data_plan.py:43: in call
+    raise AssertionError(f"{func.__name__}({short(arg)}) crashed with {type(e).__name__}: {message}") from None
+E   AssertionError: payable_bill('') crashed with ValueError: not enough values to unpack (expected 2, got 1)
+E   Failing test case: test_payable_bill_wrong_number_of_fields(
+E       parts=[],
+E   )
+============================================================== short test summary info ==============================================================
+FAILED test_mobile_data_plan.py::test_parse_plan_no_crash - AssertionError: parse_plan(None) crashed with: AttributeError: 'NoneType' object has no...
+FAILED test_mobile_data_plan.py::test_usage_average_no_crash - AssertionError: usage_average(None) crashed with: AttributeError: 'NoneType' object ...
+FAILED test_mobile_data_plan.py::test_payable_bill_no_crash - AssertionError: payable_bill(None) crashed with: AttributeError: 'NoneType' object ha...
+FAILED test_mobile_data_plan.py::test_parse_plan_format_fuzz - AssertionError: parse_plan(':') crashed with ValueError: could not convert string to...
+FAILED test_mobile_data_plan.py::test_parse_plan_data_must_be_finite_and_not_negative - AssertionError: parse_plan('standard:-1.0') returned ('Stan...
+FAILED test_mobile_data_plan.py::test_usage_average_matches_integer_mean - AssertionError: usage_average('') crashed with ValueError: invalid liter...
+FAILED test_mobile_data_plan.py::test_usage_average_messy_csv - AssertionError: usage_average('') crashed with ValueError: invalid literal for int(...
+FAILED test_mobile_data_plan.py::test_usage_average_huge_number - AssertionError: usage_average('999999999999999999999999999999999999999...<4301 ch...
+FAILED test_mobile_data_plan.py::test_payable_bill_amounts - AssertionError: payable_bill('0.0|1.0') returned int 0
+FAILED test_mobile_data_plan.py::test_payable_bill_discount_never_increases_bill - AssertionError: payable_bill('0.0|-1.0') = 1.0 > 0.0 with no dis...
+FAILED test_mobile_data_plan.py::test_payable_bill_wrong_number_of_fields - AssertionError: payable_bill('') crashed with ValueError: not enough va...
+=========================================================== 11 failed, 1 passed in 1.44s ============================================================
