@@ -1,0 +1,24 @@
+PS C:\Users\marre\Automated-Rubric-Assignment-Evaluator\Lab-7\Rushieswar_Reddy_PES1UG24AM158> python spam_scoring.py
+==== Running sender_domain ====
+Enter a sender email (e.g. offers@Deals.com): offers@Deals.com
+Sender Domain: deals.com
+
+==== Running first_link ====
+Enter a message containing a link: Check out https://example.com for deals
+First Link: https://example.com
+
+==== Running shout_ratio ====
+Enter a message (e.g. FREE prize NOW): FREE prize NOW
+Uppercase Ratio: 0.5833333333333334
+
+PS C:\Users\marre\Automated-Rubric-Assignment-Evaluator\Lab-7\Rushieswar_Reddy_PES1UG24AM158> python spam_scoring.py
+==== Running sender_domain ====
+Enter a sender email (e.g. offers@Deals.com): invalid_email_no_domain
+Traceback (most recent call last):
+  File "spam_scoring.py", line 33, in <module>
+    main()
+  File "spam_scoring.py", line 19, in main
+    result = sender_domain(user_input)
+  File "spam_scoring.py", line 2, in sender_domain
+    return email.split('@')[1].lower()
+IndexError: list index out of range

@@ -1,0 +1,133 @@
+============================= test session starts =============================
+platform win32 -- Python 3.11.9, pytest-9.2.0, pluggy-1.7.0
+rootdir: C:\Users\marre\Automated-Rubric-Assignment-Evaluator\Lab-7\Rushieswar_Reddy_PES1UG24AM158
+plugins: anyio-4.15.1, hypothesis-6.170.17, platformdirs-4.14.3, cov-7.0.0
+collected 3 items
+
+test_spam_scoring.py FFF                                                 [100%]
+
+================================== FAILURES ===================================
+_________________________ test_sender_domain_no_crash _________________________
+  + Exception Group Traceback (most recent call last):
+  |   File "test_spam_scoring.py", line 10, in test_sender_domain_no_crash
+  |     def test_sender_domain_no_crash(s):
+  |                    ^^^
+  | ExceptionGroup: Hypothesis found 2 distinct failures. (2 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "test_spam_scoring.py", line 12, in test_sender_domain_no_crash
+    |     sender_domain(s)
+    |   File "spam_scoring.py", line 2, in sender_domain
+    |     return email.split('@')[1].lower()
+    |            ~~~~~~~~~~~~~~~~^^^
+    | IndexError: list index out of range
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "test_spam_scoring.py", line 14, in test_sender_domain_no_crash
+    |     assert False, f"sender_domain crashed with: {e}"
+    | AssertionError: sender_domain crashed with: list index out of range
+    | Failing test case: test_sender_domain_no_crash(s='')
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "test_spam_scoring.py", line 12, in test_sender_domain_no_crash
+    |     sender_domain(s)
+    |   File "spam_scoring.py", line 2, in sender_domain
+    |     return email.split('@')[1].lower()
+    |            ^^^^^^^^^^^
+    | AttributeError: 'NoneType' object has no attribute 'split'
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "test_spam_scoring.py", line 14, in test_sender_domain_no_crash
+    |     assert False, f"sender_domain crashed with: {e}"
+    | AssertionError: sender_domain crashed with: 'NoneType' object has no attribute 'split'
+    | Failing test case: test_sender_domain_no_crash(s=None)
+    +------------------------------------
+
+__________________________ test_first_link_no_crash ___________________________
+  + Exception Group Traceback (most recent call last):
+  |   File "test_spam_scoring.py", line 17, in test_first_link_no_crash
+  |     def test_first_link_no_crash(s):
+  |                    ^^^
+  | ExceptionGroup: Hypothesis found 2 distinct failures. (2 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "test_spam_scoring.py", line 19, in test_first_link_no_crash
+    |     first_link(s)
+    |   File "spam_scoring.py", line 5, in first_link
+    |     start = text.index('http')
+    |             ^^^^^^^^^^^^^^^^^^
+    | ValueError: substring not found
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "test_spam_scoring.py", line 21, in test_first_link_no_crash
+    |     assert False, f"first_link crashed with: {e}"
+    | AssertionError: first_link crashed with: substring not found
+    | Failing test case: test_first_link_no_crash(s='')
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "test_spam_scoring.py", line 19, in test_first_link_no_crash
+    |     first_link(s)
+    |   File "spam_scoring.py", line 5, in first_link
+    |     start = text.index('http')
+    |             ^^^^^^^^^^
+    | AttributeError: 'NoneType' object has no attribute 'index'
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "test_spam_scoring.py", line 21, in test_first_link_no_crash
+    |     assert False, f"first_link crashed with: {e}"
+    | AssertionError: first_link crashed with: 'NoneType' object has no attribute 'index'
+    | Failing test case: test_first_link_no_crash(s=None)
+    +------------------------------------
+
+__________________________ test_shout_ratio_no_crash __________________________
+  + Exception Group Traceback (most recent call last):
+  |   File "test_spam_scoring.py", line 24, in test_shout_ratio_no_crash
+  |     def test_shout_ratio_no_crash(s):
+  |                    ^^^
+  | ExceptionGroup: Hypothesis found 2 distinct failures. (2 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "test_spam_scoring.py", line 26, in test_shout_ratio_no_crash
+    |     shout_ratio(s)
+    |   File "spam_scoring.py", line 14, in shout_ratio
+    |     return len(upper) / len(letters)
+    |            ~~~~~~~~~~~^~~~~~~~~~~~~~
+    | ZeroDivisionError: division by zero
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "test_spam_scoring.py", line 28, in test_shout_ratio_no_crash
+    |     assert False, f"shout_ratio crashed with: {e}"
+    | AssertionError: shout_ratio crashed with: division by zero
+    | Failing test case: test_shout_ratio_no_crash(s='')
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "test_spam_scoring.py", line 26, in test_shout_ratio_no_crash
+    |     shout_ratio(s)
+    |   File "spam_scoring.py", line 12, in shout_ratio
+    |     letters = [c for c in text if c.isalpha()]
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    | TypeError: 'NoneType' object is not iterable
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "test_spam_scoring.py", line 28, in test_shout_ratio_no_crash
+    |     assert False, f"shout_ratio crashed with: {e}"
+    | AssertionError: shout_ratio crashed with: 'NoneType' object is not iterable
+    | Failing test case: test_shout_ratio_no_crash(s=None)
+    +------------------------------------
+=========================== short test summary info ===========================
+FAILED test_spam_scoring.py::test_sender_domain_no_crash - ExceptionGroup: Hypothesis found 2 distinct failures
+FAILED test_spam_scoring.py::test_first_link_no_crash - ExceptionGroup: Hypothesis found 2 distinct failures
+FAILED test_spam_scoring.py::test_shout_ratio_no_crash - ExceptionGroup: Hypothesis found 2 distinct failures
+============================== 3 failed in 18.33s ==============================

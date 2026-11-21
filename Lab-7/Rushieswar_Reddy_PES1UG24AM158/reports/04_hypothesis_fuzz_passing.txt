@@ -1,0 +1,17 @@
+============================= test session starts =============================
+platform win32 -- Python 3.11.9, pytest-9.2.0, pluggy-1.7.0
+rootdir: C:\Users\marre\Automated-Rubric-Assignment-Evaluator\Lab-7\Rushieswar_Reddy_PES1UG24AM158
+plugins: anyio-4.15.1, hypothesis-6.170.17, platformdirs-4.14.3, cov-7.0.0
+collected 9 items
+
+test_spam_scoring.py::test_sender_domain_no_crash PASSED                 [ 11%]
+test_spam_scoring.py::test_first_link_no_crash PASSED                    [ 22%]
+test_spam_scoring.py::test_shout_ratio_no_crash PASSED                   [ 33%]
+test_spam_scoring.py::test_sender_domain_properties PASSED               [ 44%]
+test_spam_scoring.py::test_first_link_properties PASSED                  [ 55%]
+test_spam_scoring.py::test_shout_ratio_bounds PASSED                     [ 66%]
+test_spam_scoring.py::test_sender_domain_known_cases PASSED              [ 77%]
+test_spam_scoring.py::test_first_link_known_cases PASSED                 [ 88%]
+test_spam_scoring.py::test_shout_ratio_known_cases PASSED                [100%]
+
+============================== 9 passed in 2.65s ==============================

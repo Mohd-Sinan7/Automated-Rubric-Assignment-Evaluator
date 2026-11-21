@@ -1,0 +1,27 @@
+PS C:\Users\marre\Automated-Rubric-Assignment-Evaluator\Lab-7\Rushieswar_Reddy_PES1UG24AM158> python spam_scoring.py
+==== Running sender_domain ====
+Enter a sender email (e.g. offers@Deals.com): offers@Deals.com
+Sender Domain: deals.com
+
+==== Running first_link ====
+Enter a message containing a link: Check out https://example.com for deals
+First Link: https://example.com
+
+==== Running shout_ratio ====
+Enter a message (e.g. FREE prize NOW): FREE prize NOW
+Uppercase Ratio: 0.5833333333333334
+
+PS C:\Users\marre\Automated-Rubric-Assignment-Evaluator\Lab-7\Rushieswar_Reddy_PES1UG24AM158> python spam_scoring.py  # Demonstrating Defensive Hardening against Malformed Inputs
+==== Running sender_domain ====
+Enter a sender email (e.g. offers@Deals.com): invalid_input_no_at
+Sender Domain: 
+
+==== Running first_link ====
+Enter a message containing a link: Clean message without any url link
+First Link: 
+
+==== Running shout_ratio ====
+Enter a message (e.g. FREE prize NOW): 12345!@#$%^
+Uppercase Ratio: 0.0
+
+# Status: All inputs handled safely without crashes!
