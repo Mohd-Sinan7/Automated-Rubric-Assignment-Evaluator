@@ -9,9 +9,16 @@ DIRS = {pygame.K_UP: (-1, 0), pygame.K_DOWN: (1, 0), pygame.K_LEFT: (0, -1), pyg
 MOVE_DELAY, ENEMY_DELAY, PUMP_RANGE, DEFLATE_AFTER = 0.11, 0.35, 3, 1.5
 
 
+# Four classic Dig Dug-style soil strata, from the surface down.
+DIRT_BANDS = [(222, 170, 70), (200, 110, 40), (160, 60, 40), (110, 40, 60)]
+
+
 def dirt_color(row):
     """Return an (r, g, b) colour for dirt in the given row, or None for the default gradient."""
-    pass
+    if row <= 0:
+        return None
+    band = min((row - 1) * len(DIRT_BANDS) // (ROWS - 1), len(DIRT_BANDS) - 1)
+    return DIRT_BANDS[band]
 
 
 def on_enemy_popped(enemy, score):
