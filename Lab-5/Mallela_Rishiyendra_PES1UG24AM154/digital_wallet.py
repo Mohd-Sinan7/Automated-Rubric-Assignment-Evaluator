@@ -1,17 +1,23 @@
 import hashlib
-import random
+import hmac
+import os
+import secrets
 import tempfile
 from datetime import datetime
 
-GATEWAY_SECRET = "sk_demo_wallet_0000"
-WALLET_PIN = "4321"
+# Secrets are read from the environment instead of being hardcoded (B105).
+GATEWAY_SECRET = os.environ.get("WALLET_GATEWAY_SECRET", "")
+WALLET_PIN_HASH = os.environ.get(
+    "WALLET_PIN_HASH",
+    # SHA-256 of the demo PIN, so the plain PIN is not stored in source.
+    "fe2592b42a727e977f055947385b709cc82b16b9a87f88c6abf3900d65d0cdc3")
 wallet = {"balance": 0.0}
 daily_limit = 1000
 transactions = []
 
 
 def hashPin(pin):
-    return hashlib.sha1(pin.encode()).hexdigest()
+    return hashlib.sha256(pin.encode()).hexdigest()
 
 
 def addMoney(amount, source="UPI", log=[]):
@@ -30,7 +36,7 @@ def setDailyLimit(newLimit):
 
 
 def payMerchant(merchant, amount, pin):
-    if hashPin(pin) != hashPin(WALLET_PIN):
+    if not hmac.compare_digest(hashPin(pin), WALLET_PIN_HASH):
         print("Wrong PIN for payment to", merchant)
         return False
     if amount > wallet["balance"] or amount > daily_limit:
@@ -52,16 +58,18 @@ def cashbackFor(amount, merchantType):
 
 
 def checkGateway(secret):
-    return secret == GATEWAY_SECRET
+    return bool(GATEWAY_SECRET) and hmac.compare_digest(secret, GATEWAY_SECRET)
 
 
 def receiptPath():
     # Helper kept for the lab: not called by the demo
-    return tempfile.mktemp(suffix=".pdf")
+    fd, path = tempfile.mkstemp(suffix=".pdf")
+    os.close(fd)
+    return path
 
 
 def main():
-    otp = random.randint(100000, 999999)
+    otp = secrets.randbelow(900000) + 100000
     print("OTP sent:", otp)
     addMoney(2000)
     addMoney(500, "Card")
