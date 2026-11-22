@@ -1,0 +1,18 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.10, pytest-9.2.0, pluggy-1.7.0 -- python.exe
+hypothesis profile 'default'
+rootdir: C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154
+plugins: hypothesis-6.170.17, platformdirs-4.14.8
+collecting ... collected 9 items
+
+test_thermostat_control.py::test_parse_setpoint_no_crash PASSED          [ 11%]
+test_thermostat_control.py::test_parse_setpoint_valid_values PASSED      [ 22%]
+test_thermostat_control.py::test_parse_setpoint_rejects_unknown_unit PASSED [ 33%]
+test_thermostat_control.py::test_average_temperature_no_crash PASSED     [ 44%]
+test_thermostat_control.py::test_average_temperature_between_min_and_max PASSED [ 55%]
+test_thermostat_control.py::test_average_temperature_rejects_garbage PASSED [ 66%]
+test_thermostat_control.py::test_schedule_slot_no_crash PASSED           [ 77%]
+test_thermostat_control.py::test_schedule_slot_valid_times PASSED        [ 88%]
+test_thermostat_control.py::test_schedule_slot_out_of_range_rejected PASSED [100%]
+
+============================== 9 passed in 5.69s ==============================
