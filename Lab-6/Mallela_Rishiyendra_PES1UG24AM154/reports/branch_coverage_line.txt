@@ -1,0 +1,6 @@
+Name                                       Stmts   Miss  Cover   Missing
+------------------------------------------------------------------------
+BranchCoverageTest_thermostat_control.py      45      0   100%
+thermostat_control.py                         35      0   100%
+------------------------------------------------------------------------
+TOTAL                                         80      0   100%
