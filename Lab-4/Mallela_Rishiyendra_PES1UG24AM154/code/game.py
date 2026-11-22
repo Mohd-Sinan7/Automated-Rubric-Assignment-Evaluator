@@ -66,7 +66,9 @@ def draw_effects(screen, font):
 
 def enemy_speed_multiplier(level):
     """Return a speed multiplier for enemies at the given level, or None for the default speed."""
-    pass
+    if level <= 1:
+        return None  # default 1x on the first level
+    return min(1 + 0.1 * level, 2.0)  # 10% faster per level, capped at 2x
 
 
 def in_bounds(r, c):
@@ -114,11 +116,11 @@ class Game:
 
     def reset(self):
         self.level, self.score, self.lives, self.state = 1, 0, 3, "play"
+        PARTICLES.clear()
+        POPUPS.clear()
         self.start_level()
 
     def start_level(self):
-        PARTICLES.clear()
-        POPUPS.clear()
         self.grid = [[r > 0 for _ in range(COLS)] for r in range(ROWS)]
         self.player = (0, COLS // 2)
         self.facing = (0, 1)
