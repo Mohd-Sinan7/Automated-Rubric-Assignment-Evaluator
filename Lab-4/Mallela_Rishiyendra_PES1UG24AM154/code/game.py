@@ -1,3 +1,4 @@
+import math
 import random
 from collections import deque
 
@@ -21,9 +22,46 @@ def dirt_color(row):
     return DIRT_BANDS[band]
 
 
+PARTICLES = []   # [x, y, vx, vy, life, colour]
+POPUPS = []      # [x, y, life, text]
+
+
 def on_enemy_popped(enemy, score):
     """Called when an enemy is popped; add particles, bonus points, or a colour flash here."""
-    pass
+    x = enemy.cell[1] * TILE + TILE // 2
+    y = enemy.cell[0] * TILE + TILE // 2
+    for _ in range(28):
+        speed = random.uniform(60, 220)
+        angle = random.uniform(0, 6.2832)
+        colour = random.choice([(255, 90, 90), (255, 200, 80), (255, 255, 255)])
+        PARTICLES.append([x, y, speed * math.cos(angle), speed * math.sin(angle),
+                          random.uniform(0.4, 0.8), colour])
+    POPUPS.append([x, y, 1.0, f"+{200 + 100 * (enemy.cell[0] // 4)}  ({score})"])
+
+
+def update_effects(dt):
+    """Move and fade the particle burst and score pop-ups."""
+    for p in PARTICLES[:]:
+        p[0] += p[2] * dt
+        p[1] += p[3] * dt
+        p[3] += 300 * dt  # gravity
+        p[4] -= dt
+        if p[4] <= 0:
+            PARTICLES.remove(p)
+    for t in POPUPS[:]:
+        t[1] -= 30 * dt
+        t[2] -= dt
+        if t[2] <= 0:
+            POPUPS.remove(t)
+
+
+def draw_effects(screen, font):
+    """Render particles and floating score text."""
+    for x, y, _, _, life, colour in PARTICLES:
+        pygame.draw.circle(screen, colour, (int(x), int(y)), max(1, int(4 * life / 0.8)))
+    for x, y, _, text in POPUPS:
+        label = font.render(text, True, (255, 255, 120))
+        screen.blit(label, label.get_rect(center=(int(x), int(y))))
 
 
 def enemy_speed_multiplier(level):
@@ -79,6 +117,8 @@ class Game:
         self.start_level()
 
     def start_level(self):
+        PARTICLES.clear()
+        POPUPS.clear()
         self.grid = [[r > 0 for _ in range(COLS)] for r in range(ROWS)]
         self.player = (0, COLS // 2)
         self.facing = (0, 1)
@@ -162,6 +202,7 @@ class Game:
             enemy.cell = path[0]
 
     def update(self, dt, keys):
+        update_effects(dt)
         if self.state != "play":
             return
         self.time += dt
@@ -205,6 +246,7 @@ class Game:
         if self.pump_target:
             tx, ty = self.pump_target.cell[1] * TILE + TILE // 2, self.pump_target.cell[0] * TILE + TILE // 2
             pygame.draw.line(screen, (255, 255, 120), (px, py), (tx, ty), 3)
+        draw_effects(screen, self.font)
         hud = self.font.render(f"Score {self.score}  Lives {self.lives}  Level {self.level}  R = reset", True, (240, 240, 240))
         screen.blit(hud, (10, ROWS * TILE + 8))
         if self.state == "lose":
