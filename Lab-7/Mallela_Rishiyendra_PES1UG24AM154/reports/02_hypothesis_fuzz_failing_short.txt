@@ -1,0 +1,237 @@
+F.FF.FFFF                                                                [100%]
+================================== FAILURES ===================================
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\test_thermostat_control.py", line 20, in test_parse_setpoint_no_crash
+  |     @given(st.text() | st.none())
+  |                    ^^^
+  | ExceptionGroup: Hypothesis found 2 distinct failures. (2 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\test_thermostat_control.py", line 23, in test_parse_setpoint_no_crash
+    |     result = parse_setpoint(s)
+    |              ^^^^^^^^^^^^^^^^^
+    |   File "C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\thermostat_control.py", line 2, in parse_setpoint
+    |     value = float(text[:-1])
+    |             ^^^^^^^^^^^^^^^^
+    | ValueError: could not convert string to float: ''
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\test_thermostat_control.py", line 25, in test_parse_setpoint_no_crash
+    |     assert False, f"parse_setpoint crashed with: {e!r}"
+    | AssertionError: parse_setpoint crashed with: ValueError("could not convert string to float: ''")
+    | assert False
+    | Failing test case: test_parse_setpoint_no_crash(
+    |     s='',
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\test_thermostat_control.py", line 23, in test_parse_setpoint_no_crash
+    |     result = parse_setpoint(s)
+    |              ^^^^^^^^^^^^^^^^^
+    |   File "C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\thermostat_control.py", line 2, in parse_setpoint
+    |     value = float(text[:-1])
+    |                   ~~~~^^^^^
+    | TypeError: 'NoneType' object is not subscriptable
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\test_thermostat_control.py", line 25, in test_parse_setpoint_no_crash
+    |     assert False, f"parse_setpoint crashed with: {e!r}"
+    | AssertionError: parse_setpoint crashed with: TypeError("'NoneType' object is not subscriptable")
+    | assert False
+    | Failing test case: test_parse_setpoint_no_crash(
+    |     s=None,
+    | )
+    +------------------------------------
+C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\test_thermostat_control.py:20: ExceptionGroup: Hypothesis found 2 distinct failures. (2 sub-exceptions)
+E   AssertionError: assert 0.0 is None
+     +  where 0.0 = parse_setpoint('0.0K')
+    Failing test case: test_parse_setpoint_rejects_unknown_unit(
+        value=0.0,
+        unit='K',
+    )
+C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\test_thermostat_control.py:41: AssertionError: assert 0.0 is None
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\test_thermostat_control.py", line 46, in test_average_temperature_no_crash
+  |     @given(st.text() | st.none())
+  |                    ^^^
+  | ExceptionGroup: Hypothesis found 3 distinct failures. (3 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\test_thermostat_control.py", line 52, in test_average_temperature_no_crash
+    |     assert result is None or (isinstance(result, float) and math.isfinite(result))
+    | AssertionError: assert (inf is None or (True and False))
+    |  +  where True = isinstance(inf, float)
+    |  +  and   False = <built-in function isfinite>(inf)
+    |  +    where <built-in function isfinite> = math.isfinite
+    | Failing test case: test_average_temperature_no_crash(
+    |     s='INF',
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\test_thermostat_control.py", line 49, in test_average_temperature_no_crash
+    |     result = average_temperature(s)
+    |              ^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\thermostat_control.py", line 8, in average_temperature
+    |     values = [float(r) for r in readings_csv.split(',')]
+    |               ^^^^^^^^
+    | ValueError: could not convert string to float: ''
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\test_thermostat_control.py", line 51, in test_average_temperature_no_crash
+    |     assert False, f"average_temperature crashed with: {e!r}"
+    | AssertionError: average_temperature crashed with: ValueError("could not convert string to float: ''")
+    | assert False
+    | Failing test case: test_average_temperature_no_crash(
+    |     s='',
+    | )
+    +---------------- 3 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\test_thermostat_control.py", line 49, in test_average_temperature_no_crash
+    |     result = average_temperature(s)
+    |              ^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\thermostat_control.py", line 8, in average_temperature
+    |     values = [float(r) for r in readings_csv.split(',')]
+    |                                 ^^^^^^^^^^^^^^^^^^
+    | AttributeError: 'NoneType' object has no attribute 'split'
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\test_thermostat_control.py", line 51, in test_average_temperature_no_crash
+    |     assert False, f"average_temperature crashed with: {e!r}"
+    | AssertionError: average_temperature crashed with: AttributeError("'NoneType' object has no attribute 'split'")
+    | assert False
+    | Failing test case: test_average_temperature_no_crash(
+    |     s=None,
+    | )
+    +------------------------------------
+C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\test_thermostat_control.py:46: ExceptionGroup: Hypothesis found 3 distinct failures. (3 sub-exceptions)
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\test_thermostat_control.py", line 64, in test_average_temperature_rejects_garbage
+  |     @given(st.lists(st.sampled_from(["", " ", "nan", "inf", "abc", "-inf"]),
+  |                    ^^^
+  | ExceptionGroup: Hypothesis found 2 distinct failures. (2 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\test_thermostat_control.py", line 67, in test_average_temperature_rejects_garbage
+    |     assert average_temperature(",".join(parts)) is None
+    | AssertionError: assert nan is None
+    |  +  where nan = average_temperature('nan')
+    |  +    where 'nan' = <built-in method join of str object at 0x00007FFDC7EC3450>(['nan'])
+    |  +      where <built-in method join of str object at 0x00007FFDC7EC3450> = ','.join
+    | Failing test case: test_average_temperature_rejects_garbage(
+    |     parts=['nan'],
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\test_thermostat_control.py", line 67, in test_average_temperature_rejects_garbage
+    |     assert average_temperature(",".join(parts)) is None
+    |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\thermostat_control.py", line 8, in average_temperature
+    |     values = [float(r) for r in readings_csv.split(',')]
+    |               ^^^^^^^^
+    | ValueError: could not convert string to float: ''
+    | Failing test case: test_average_temperature_rejects_garbage(
+    |     parts=[''],
+    | )
+    +------------------------------------
+C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\test_thermostat_control.py:64: ExceptionGroup: Hypothesis found 2 distinct failures. (2 sub-exceptions)
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\test_thermostat_control.py", line 72, in test_schedule_slot_no_crash
+  |     @given(st.text() | st.none())
+  |                    ^^^
+  | ExceptionGroup: Hypothesis found 3 distinct failures. (3 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\test_thermostat_control.py", line 75, in test_schedule_slot_no_crash
+    |     result = schedule_slot(s)
+    |              ^^^^^^^^^^^^^^^^
+    |   File "C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\thermostat_control.py", line 13, in schedule_slot
+    |     hour = int(hour)
+    |            ^^^^^^^^^
+    | ValueError: invalid literal for int() with base 10: ''
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\test_thermostat_control.py", line 77, in test_schedule_slot_no_crash
+    |     assert False, f"schedule_slot crashed with: {e!r}"
+    | AssertionError: schedule_slot crashed with: ValueError("invalid literal for int() with base 10: ''")
+    | assert False
+    | Failing test case: test_schedule_slot_no_crash(
+    |     s=':',
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\test_thermostat_control.py", line 75, in test_schedule_slot_no_crash
+    |     result = schedule_slot(s)
+    |              ^^^^^^^^^^^^^^^^
+    |   File "C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\thermostat_control.py", line 12, in schedule_slot
+    |     hour, minute = time_text.split(':')
+    |     ^^^^^^^^^^^^
+    | ValueError: not enough values to unpack (expected 2, got 1)
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\test_thermostat_control.py", line 77, in test_schedule_slot_no_crash
+    |     assert False, f"schedule_slot crashed with: {e!r}"
+    | AssertionError: schedule_slot crashed with: ValueError('not enough values to unpack (expected 2, got 1)')
+    | assert False
+    | Failing test case: test_schedule_slot_no_crash(
+    |     s='',
+    | )
+    +---------------- 3 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\test_thermostat_control.py", line 75, in test_schedule_slot_no_crash
+    |     result = schedule_slot(s)
+    |              ^^^^^^^^^^^^^^^^
+    |   File "C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\thermostat_control.py", line 12, in schedule_slot
+    |     hour, minute = time_text.split(':')
+    |                    ^^^^^^^^^^^^^^^
+    | AttributeError: 'NoneType' object has no attribute 'split'
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\test_thermostat_control.py", line 77, in test_schedule_slot_no_crash
+    |     assert False, f"schedule_slot crashed with: {e!r}"
+    | AssertionError: schedule_slot crashed with: AttributeError("'NoneType' object has no attribute 'split'")
+    | assert False
+    | Failing test case: test_schedule_slot_no_crash(
+    |     s=None,
+    | )
+    +------------------------------------
+C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\test_thermostat_control.py:72: ExceptionGroup: Hypothesis found 3 distinct failures. (3 sub-exceptions)
+E   AssertionError: assert 'day 0' == 'day 00'
+      
+      - day 00
+      ?      -
+      + day 0
+    Failing test case: test_schedule_slot_valid_times(
+        hour=6,
+        minute=0,
+    )
+C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\test_thermostat_control.py:86: AssertionError: assert 'day 0' == 'day 00'
+E   AssertionError: assert 'night -1' is None
+     +  where 'night -1' = schedule_slot('0:-1')
+    Failing test case: test_schedule_slot_out_of_range_rejected(
+        hour=0,
+        minute=-1,
+    )
+C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\test_thermostat_control.py:94: AssertionError: assert 'night -1' is None
+=========================== short test summary info ===========================
+FAILED test_thermostat_control.py::test_parse_setpoint_no_crash - ExceptionGr...
+FAILED test_thermostat_control.py::test_parse_setpoint_rejects_unknown_unit
+FAILED test_thermostat_control.py::test_average_temperature_no_crash - Except...
+FAILED test_thermostat_control.py::test_average_temperature_rejects_garbage
+FAILED test_thermostat_control.py::test_schedule_slot_no_crash - ExceptionGro...
+FAILED test_thermostat_control.py::test_schedule_slot_valid_times - Assertion...
+FAILED test_thermostat_control.py::test_schedule_slot_out_of_range_rejected
+7 failed, 2 passed in 2.47s

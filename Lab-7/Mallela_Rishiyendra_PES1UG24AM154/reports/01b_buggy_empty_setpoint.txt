@@ -1,0 +1,12 @@
+==== Running parse_setpoint ====
+Enter a setpoint (e.g. 21.5C or 70F): 
+Traceback (most recent call last):
+  File "C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\thermostat_control_buggy.py", line 35, in <module>
+    main()
+  File "C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\thermostat_control_buggy.py", line 21, in main
+    result = parse_setpoint(user_input)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\thermostat_control_buggy.py", line 2, in parse_setpoint
+    value = float(text[:-1])
+            ^^^^^^^^^^^^^^^^
+ValueError: could not convert string to float: ''

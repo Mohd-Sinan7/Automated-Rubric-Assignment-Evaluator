@@ -1,0 +1,20 @@
+==== Running parse_setpoint ====
+Enter a setpoint (e.g. 21.5C or 70F): 70F
+Setpoint in Celsius: 21.1
+
+==== Running average_temperature ====
+Enter sensor readings as CSV (e.g. 20.5,21,22.5): 20,21
+Average Temperature: 20.5
+
+==== Running schedule_slot ====
+Enter a time as HH:MM (e.g. 07:30): 0730
+Traceback (most recent call last):
+  File "C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\thermostat_control_buggy.py", line 35, in <module>
+    main()
+  File "C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\thermostat_control_buggy.py", line 31, in main
+    result = schedule_slot(user_input)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\SE_Labs\Lab-7\Mallela_Rishiyendra_PES1UG24AM154\thermostat_control_buggy.py", line 12, in schedule_slot
+    hour, minute = time_text.split(':')
+    ^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 2, got 1)
