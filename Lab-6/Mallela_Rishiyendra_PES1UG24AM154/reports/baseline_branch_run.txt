@@ -1,0 +1,9 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.10, pytest-9.2.0, pluggy-1.7.0
+rootdir: C:\Users\rishy\AppData\Local\Temp\chk\Lab-6\Mallela_Rishiyendra_PES1UG24AM154
+plugins: hypothesis-6.170.17, platformdirs-4.14.8
+collected 2 items
+
+test_thermostat_control.py ..                                            [100%]
+
+============================== 2 passed in 1.28s ==============================
